@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather WebApp</title>
+    <link rel="icon" type="image/png" href="./icon.png">
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="eel.js" defer></script>
+    <script src="./script.js" defer></script>
+</head>
+
+<body>
+    <div class="container"> <!-- Container for the search box -->
+        <div class="search">
+            <input id="location" type="text" class="search-bar" placeholder="Enter location" aria-label="Enter a city name">
+            <button id="show">Show</button>
+        </div>
+
+        <div class="weather loading">
+            <h2 class="city">City Name</h2>
+            <h1 class="temp">Temperature</h1>
+            <div class="flex"></div>
+        </div>
+    </div>
+
+<script type="text/javascript"> // JavaScript code
+        
+    window.addEventListener("load", function () {
+        document.getElementById('none').style.display = "block";
+    })
+
+    async function ShowWeather() {
+
+        if (!location) {
+            alert('Please enter a location')
+            return;
+        }
+        
+        let place = document.getElementById('location').value
+
+        let response = await eel.get_weather(place)()
+
+        var hourly = response.hourly
+        var precipitation = hourly.precipitation
+
+        if (precipitation) {
+            for (let i = 0; i < precipitation.length; i++) {
+                    console.log(`Now ${i + 1}: ${precipitation[i]} mm`)
+            }
+        }
+
+        document.getElementById('info').style.display = 'block'
+        document.getElementById("weather").innerText = response
+    }
+
+</script>
+</body>
+
+</html>
