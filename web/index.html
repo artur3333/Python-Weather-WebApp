@@ -14,16 +14,24 @@
 
 <body>
     <div class="container"> <!-- Container for the search box -->
+
+        <h1 class="title">Weather WebApp</h1>
+
         <div class="search">
             <input id="location" type="text" class="search-bar" placeholder="Enter location" aria-label="Enter a city name">
             <button id="show">Show</button>
         </div>
 
-        <div class="weather loading">
+        <div class="weather-loading">
+            <img src="https://openweathermap.org/img/wn/01d.png" alt="" class="icon" />
             <h2 class="city">City Name</h2>
             <h1 class="temp">Temperature</h1>
+            <p class="description">Weather Description</p>
+            <p class="humidity">Humidity: --</p>
+            <p class="wind">Wind Speed: --</p>
             <div class="flex"></div>
         </div>
+
     </div>
 
 <script type="text/javascript"> // JavaScript code
